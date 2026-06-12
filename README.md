@@ -1,8 +1,9 @@
-# movie-recommendation-association-rules
-Movie Recommendation System using Apriori and FP-Growth
 # Movie Recommendation System using Association Rules
 
-## Members
+## Project Overview
+Movie recommendation system using Association Rules mining techniques (Apriori and FP-Growth) on the MovieLens dataset.
+
+## Team Members
 1. ...
 2. ...
 3. Ngô Thành Đạt
@@ -10,6 +11,8 @@ Movie Recommendation System using Apriori and FP-Growth
 ## Technologies
 - Python
 - Pandas
+- NumPy
+- Matplotlib
 - mlxtend
 - Streamlit
 
@@ -18,4 +21,23 @@ Movie Recommendation System using Apriori and FP-Growth
 - FP-Growth
 
 ## Dataset
-- MovieLens
+- MovieLens Latest Small
+
+## Project Structure
+
+data/
+notebooks/
+src/
+app/
+models/
+reports/
+slides/
+demo/
+
+## Installation
+
+pip install -r requirements.txt
+
+## Run Application
+
+streamlit run app/streamlit_app.py
