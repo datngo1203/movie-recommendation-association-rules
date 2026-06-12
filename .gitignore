@@ -216,3 +216,29 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project specific
+
+# Virtual Environment
+.venv/
+
+# Dataset
+data/raw/
+data/processed/
+
+# Trained models
+models/*.pkl
+models/*.joblib
+
+# Demo videos
+demo/*.mp4
+
+# Report exports
+reports/*.pdf
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
