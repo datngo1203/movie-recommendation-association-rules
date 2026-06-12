@@ -1,0 +1,4 @@
+antecedents,consequents,support,confidence,lift
+Toy Story (1995),Finding Nemo (2003),0.13,0.87,2.20
+Jumanji (1995),Shrek (2001),0.09,0.81,1.90
+Aladdin (1992),Mulan (1998),0.07,0.79,1.70
