@@ -3,7 +3,7 @@ import streamlit as st
 from components.layout import render_app_header, render_sidebar
 from components.metrics import render_dataset_overview, render_model_readiness
 from components.results import render_empty_recommendations, render_recommendation_results
-from components.selectors import render_movie_selector
+from components.selectors import render_movie_selector, render_genre_selector
 from config import APP_ICON, APP_TITLE
 from data_loader import load_movies
 from recommendation_service import RecommendationRequest, build_recommendations, load_rule_sources
@@ -27,11 +27,16 @@ def main() -> None:
         render_model_readiness(rule_sources)
 
     with recommender_tab:
-        selected_movies = render_movie_selector(movies_df)
+        col1, col2 = st.columns(2)
+        with col1:
+            selected_movies = render_movie_selector(movies_df)
+        with col2:
+            selected_genres = render_genre_selector(movies_df)
 
         if st.button("Tạo gợi ý", type="primary", use_container_width=True):
             request = RecommendationRequest(
                 selected_movie_titles=selected_movies,
+                selected_genres=selected_genres,
                 algorithm=settings["algorithm"],
                 min_confidence=settings["min_confidence"],
                 max_results=settings["max_results"],

@@ -9,7 +9,7 @@ DATA_DIR = PROJECT_ROOT / "data"
 RAW_DATA_DIR = DATA_DIR / "raw"
 MODELS_DIR = PROJECT_ROOT / "models"
 
-MOVIES_FILE = RAW_DATA_DIR / "movies.csv"
+MOVIES_FILE = PROJECT_ROOT / "data" / "processed" / "movies_processed.csv"
 
 RULE_OUTPUTS = {
     "Apriori": MODELS_DIR / "apriori_rules.csv",

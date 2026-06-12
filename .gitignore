@@ -1,5 +1,11 @@
 .venv/
+venv/
 __pycache__/
 *.pyc
+.pytest_cache/
+.mypy_cache/
 .ipynb_checkpoints/
 .vscode/
+*.log
+streamlit.err.log
+streamlit.out.log

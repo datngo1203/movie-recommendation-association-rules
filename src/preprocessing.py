@@ -165,6 +165,16 @@ print("-" * 40)
 PROCESSED_DIR = os.path.join(BASE_DIR, 'data', 'processed')
 os.makedirs(PROCESSED_DIR, exist_ok=True)
 
+# Tính toán rating_mean và rating_count
+movie_rating_stats = ratings.groupby('movieId').agg(
+    rating_mean=('rating', 'mean'),
+    rating_count=('rating', 'count')
+).reset_index()
+
+movies = movies.merge(movie_rating_stats, on='movieId', how='left')
+movies['rating_mean'] = movies['rating_mean'].fillna(0.0)
+movies['rating_count'] = movies['rating_count'].fillna(0).astype(int)
+
 movies_out = movies.drop(columns=['genres_list'])
 movies_out.to_csv(os.path.join(PROCESSED_DIR, 'movies_processed.csv'), index=False)
 ratings.to_csv(os.path.join(PROCESSED_DIR, 'ratings_processed.csv'), index=False)
