@@ -1,11 +1,11 @@
 # Movie Recommendation System using Association Rules
 
 ## Project Overview
-Movie recommendation system using Association Rules mining techniques (Apriori and FP-Growth) on the MovieLens dataset.
+Movie Reccommendation using either Apriori or FP-Growth to suggesting film based on user's genres using Python.
 
 ## Team Members
-1. ...
-2. ...
+1. Nguyễn Bảo Khôi
+2. Lê Thanh Tùng
 3. Ngô Thành Đạt
 
 ## Technologies
@@ -35,6 +35,10 @@ slides/
 demo/
 
 ## Installation
+
+python -m venv venv 
+
+venv/Script/activate
 
 pip install -r requirements.txt
 
