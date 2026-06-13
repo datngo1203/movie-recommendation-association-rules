@@ -38,7 +38,11 @@ def render_sidebar(rule_sources: dict[str, RuleSource]) -> dict[str, object]:
     st.sidebar.divider()
     st.sidebar.caption("Trạng thái tích hợp")
     for source in rule_sources.values():
-        status = "Sẵn sàng" if source.is_available else "Chưa có file"
+        if source.is_available:
+            runtime = source.rules["runtime_seconds"].iloc[0] if "runtime_seconds" in source.rules.columns and not source.rules.empty else 0.0
+            status = f"Sẵn sàng (Đã chạy: {runtime:.4f} giây)"
+        else:
+            status = "Chưa có file"
         st.sidebar.write(f"{source.algorithm}: {status}")
 
     return {

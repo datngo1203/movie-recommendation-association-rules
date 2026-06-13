@@ -34,6 +34,8 @@ def main() -> None:
             selected_genres = render_genre_selector(movies_df)
 
         if st.button("Tạo gợi ý", type="primary", use_container_width=True):
+            import time
+            start_time = time.perf_counter()
             request = RecommendationRequest(
                 selected_movie_titles=selected_movies,
                 selected_genres=selected_genres,
@@ -42,7 +44,8 @@ def main() -> None:
                 max_results=settings["max_results"],
             )
             result = build_recommendations(request, rule_sources)
-            render_recommendation_results(result)
+            elapsed = time.perf_counter() - start_time
+            render_recommendation_results(result, elapsed)
         else:
             render_empty_recommendations()
 

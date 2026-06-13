@@ -25,15 +25,20 @@ def render_dataset_overview(movies_df: pd.DataFrame) -> None:
 def render_model_readiness(rule_sources: dict[str, RuleSource]) -> None:
     st.subheader("Trạng thái kết quả mô hình")
 
-    rows = [
-        {
+    rows = []
+    for source in rule_sources.values():
+        runtime_str = "N/A"
+        if source.is_available and not source.rules.empty:
+            if "runtime_seconds" in source.rules.columns:
+                runtime_str = f"{source.rules['runtime_seconds'].iloc[0]:.4f} giây"
+        
+        rows.append({
             "Thuật toán": source.algorithm,
             "File mong đợi": str(source.path),
             "Trạng thái": "Đã có dữ liệu" if source.is_available else "Chưa có dữ liệu",
             "Số luật": len(source.rules),
-        }
-        for source in rule_sources.values()
-    ]
+            "Thời gian huấn luyện": runtime_str,
+        })
     st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 
 

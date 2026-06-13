@@ -48,10 +48,10 @@ def load_rule_sources() -> dict[str, RuleSource]:
     for algorithm, path in RULE_OUTPUTS.items():
         actual_path = path
         if not actual_path.exists():
-            if algorithm == "FP-Growth" and (path.parent / "fpgrowth.csv").exists():
-                actual_path = path.parent / "fpgrowth.csv"
-            elif algorithm == "Apriori" and (path.parent / "apriori.csv").exists():
-                actual_path = path.parent / "apriori.csv"
+            if algorithm == "FP-Growth" and (path.parent / "fpgrowth_rules.csv").exists():
+                actual_path = path.parent / "fpgrowth_rules.csv"
+            elif algorithm == "Apriori" and (path.parent / "apriori_rules.csv").exists():
+                actual_path = path.parent / "apriori_rules.csv"
 
         rules = _read_rules(actual_path)
         sources[algorithm] = RuleSource(
